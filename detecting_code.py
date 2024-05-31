@@ -2,11 +2,11 @@ import cv2
 from google.colab.patches import cv2_imshow
 from ultralytics import YOLO
 
-model = YOLO('runs/detect/train/weights/best.pt') // 학습된 YOLO 모델 불러오기
+model = YOLO('runs/detect/train/weights/best.pt') # 학습된 YOLO 모델 불러오기
 
-cap = cv2.VideoCapture('ml_hw.mp4') // 동영상 캡처
+cap = cv2.VideoCapture('ml_hw.mp4') # 동영상 캡처
 
-// 원본 비디오의 프레임 측정
+# 원본 비디오의 프레임 측정
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
@@ -21,7 +21,7 @@ while cap.isOpened():
     if not ret:
         break
 
-    results = model(frame, device='cpu') // 객체 감지
+    results = model(frame, device='cpu') # 객체 감지
 
     for result in results:
         boxes = result.boxes
